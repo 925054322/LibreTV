@@ -27,11 +27,11 @@ function isPasswordRequired() {
  */
 function ensurePasswordProtection() {
     if (isPasswordRequired()) {
-        showPasswordModal();
+//        showPasswordModal();
         throw new Error('Password protection is required');
     }
     if (isPasswordProtected() && !isPasswordVerified()) {
-        showPasswordModal();
+ //       showPasswordModal();
         throw new Error('Password verification required');
     }
     return true;
@@ -228,13 +228,13 @@ async function handlePasswordSubmit() {
 function initPasswordProtection() {
     // 如果需要强制设置密码，显示警告弹窗
     if (isPasswordRequired()) {
-        showPasswordModal();
+ //       showPasswordModal();
         return;
     }
     
     // 如果设置了密码但用户未验证，显示密码输入框
     if (isPasswordProtected() && !isPasswordVerified()) {
-        showPasswordModal();
+//        showPasswordModal();
         return;
     }
 }
