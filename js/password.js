@@ -9,7 +9,7 @@ function isPasswordProtected() {
     const pwd = window.__ENV__ && window.__ENV__.PASSWORD;
     
     // 检查普通密码是否有效
-    return typeof pwd === 'string' && pwd.length === 64 && !/^0+$/.test(pwd);
+//    return typeof pwd === 'string' && pwd.length === 64 && !/^0+$/.test(pwd);
 }
 
 /**
@@ -18,7 +18,7 @@ function isPasswordProtected() {
  * 为了安全考虑，所有部署都必须设置密码
  */
 function isPasswordRequired() {
-    return !isPasswordProtected();
+//    return !isPasswordProtected();
 }
 
 /**
@@ -27,18 +27,18 @@ function isPasswordRequired() {
  */
 function ensurePasswordProtection() {
     if (isPasswordRequired()) {
-        showPasswordModal();
-        throw new Error('Password protection is required');
+  //      showPasswordModal();
+  //      throw new Error('Password protection is required');
     }
     if (isPasswordProtected() && !isPasswordVerified()) {
-        showPasswordModal();
-        throw new Error('Password verification required');
+   //     showPasswordModal();
+   //     throw new Error('Password verification required');
     }
     return true;
 }
 
-window.isPasswordProtected = isPasswordProtected;
-window.isPasswordRequired = isPasswordRequired;
+//window.isPasswordProtected = isPasswordProtected;
+//window.isPasswordRequired = isPasswordRequired;
 
 /**
  * 验证用户输入的密码是否正确（异步，使用SHA-256哈希）
@@ -111,7 +111,7 @@ async function sha256(message) {
  */
 function showPasswordModal() {
     const passwordModal = document.getElementById('passwordModal');
-    if (passwordModal) {
+    if (!passwordModal) {
         // 防止出现豆瓣区域滚动条
         document.getElementById('doubanArea').classList.add('hidden');
         document.getElementById('passwordCancelBtn').classList.add('hidden');
@@ -228,13 +228,13 @@ async function handlePasswordSubmit() {
 function initPasswordProtection() {
     // 如果需要强制设置密码，显示警告弹窗
     if (isPasswordRequired()) {
-        showPasswordModal();
+    //    showPasswordModal();
         return;
     }
     
     // 如果设置了密码但用户未验证，显示密码输入框
     if (isPasswordProtected() && !isPasswordVerified()) {
-        showPasswordModal();
+//        showPasswordModal();
         return;
     }
 }
